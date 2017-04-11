@@ -1,0 +1,16 @@
+{
+	"parserOptions": {
+		"ecmaVersion": 7,
+		"sourceType": "module"
+	},
+	"env": {
+		"browser": true,
+		"node": true,
+		"commonjs": true,
+		"es6": true
+	},
+	"rules": {
+		"eqeqeq": "smart",
+		"quotes": ["error", "single"]
+	}
+}
