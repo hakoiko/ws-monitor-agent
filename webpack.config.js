@@ -2,7 +2,8 @@ const path = require('path');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
-	entry: './app/index.js',
+	context: path.resolve(__dirname, 'src'),
+	entry: './app.js',
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'dist')
@@ -15,9 +16,17 @@ module.exports = {
 				loader: 'babel-loader',
 				options: {
 					presets: [
-						['es2016', {modules: true}]
+						['es2016']
 					]
 				}
+			}]
+		},{
+			test: /\.scss$/,
+			use: ['style-loader', 'css-loader', 'sass-loader']
+		}, {
+			test: /\.(png|jpg)$/,
+			use: [{
+				loader: 'url-loader'
 			}]
 		}]
 	},
