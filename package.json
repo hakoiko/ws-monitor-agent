@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --watch",
+    "start": "npm-run-all --parallel watch:server watch:build",
+    "watch:build": "webpack --watch",
+    "watch:server": "nodemon \"./dist/bundle.node.js\" --watch \"./dist\"",
     "build": "webpack -p"
   },
   "author": "clowleed",
@@ -20,9 +22,18 @@
     "file-loader": "^0.11.1",
     "lodash": "^4.17.4",
     "node-sass": "^4.5.2",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.2",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
     "url-loader": "^0.5.8",
-    "webpack": "^2.3.3"
+    "webpack": "^2.3.3",
+    "webpack-node-externals": "^1.5.4",
+    "webpack-shell-plugin": "^0.5.0"
+  },
+  "dependencies": {
+    "pm2": "^2.4.4",
+    "systeminformation": "^3.17.0",
+    "ws": "^2.2.3"
   }
 }

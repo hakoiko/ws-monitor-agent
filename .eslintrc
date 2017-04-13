@@ -9,12 +9,15 @@
 	"env": {
 		"browser": true,
 		"node": true,
-		"commonjs": true,
 		"es6": true
 	},
 	"rules": {
+		"semi": 1,
 		"eqeqeq": "smart",
-		"quotes": ["error", "single"],
-		"indent": ["error", "tab"]
-	}
+		"quotes": [2, "single"],
+		"indent": [2, "tab"],
+		"no-undef": 2,
+		"no-unused-vars": 1,
+		"no-use-before-define": 2
+		}
 }

@@ -1,12 +1,4 @@
-import _ from 'lodash';
+var sysinfo = require('./sysinfo')
 
-function component () {
-	const john = 'John';
-	var element = document.createElement('div');
-	
-	/* lodash is required for the next line to work */
-	element.innerHTML = _.join(['Hello','webpack', john], ' ');
-	
-	return element;
-}
-document.body.appendChild(component());
+console.log('HELLO');
+sysinfo.getCpu();
