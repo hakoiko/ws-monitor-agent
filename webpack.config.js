@@ -23,7 +23,8 @@ var serverCfg = {
 				options: {
 					presets: [
 						['es2016']
-					]
+					],
+					plugins: [require('babel-plugin-transform-strict-mode')]
 				}
 			}]
 		}]

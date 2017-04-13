@@ -1,15 +1,16 @@
-var si = require('systeminformation');
+let si = require('systeminformation');
+let cpu = require('cpu-stat');
 
-var sysinfo = {
-	getCpu: function() {
+let sysinfo = {
+	cpu: function() {
 		return new Promise((resolve, reject) => {
-			si.cpu(function(data) {
-				console.log('CPU-Information:');
-				console.log(data);
-				resolve(data);
-			}, function(err) {
-				reject(err);
-			})
+			cpu.usagePercent(function(err, percent, seconds) {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(percent);
+				}
+			});
 		});
 	},
 };

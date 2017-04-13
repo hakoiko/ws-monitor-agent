@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "node system monitoring test for aether.",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "http://gitlab.growthsoft.co.kr/growthdev/aether-monitor.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm-run-all --parallel watch:server watch:build",
@@ -15,6 +19,7 @@
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
+    "babel-plugin-transform-strict-mode": "^6.24.1",
     "babel-preset-es2016": "^6.24.1",
     "browser-sync": "^2.18.8",
     "browser-sync-webpack-plugin": "^1.1.4",
@@ -32,6 +37,7 @@
     "webpack-shell-plugin": "^0.5.0"
   },
   "dependencies": {
+    "cpu-stat": "^2.0.1",
     "pm2": "^2.4.4",
     "systeminformation": "^3.17.0",
     "ws": "^2.2.3"
