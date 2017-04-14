@@ -25,7 +25,6 @@
     "browser-sync-webpack-plugin": "^1.1.4",
     "file-loader": "^0.11.1",
     "lodash": "^4.17.4",
-    "node-sass": "^4.5.2",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
     "url-loader": "^0.5.8",
