@@ -1,7 +1,10 @@
 const Sysinfo = require('./sysinfo');
 const Config = require('./config');
+const Websocket = require('ws');
+const os = require('os');
 
 console.log(Config.ROW);
+const ws = new Websocket(Config.AETHER_URL);
 
 let stat = {
 	cpu: () => {
@@ -15,6 +18,15 @@ let stat = {
 	}
 };
 
-stat.cpu().then((res) => {
-	console.log(res);
+console.log(os.hostname());
+
+ws.on('open', function open() {
+	setInterval(() => {
+		stat.cpu().then((res) => {
+			console.log('SEND:', res)
+			ws.send(res);
+		}).catch((err) => {
+			ws.send(err);
+		});
+	}, 1000);
 });
