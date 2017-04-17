@@ -26,7 +26,7 @@ ws.on('open', function open() {
 			console.log('SEND:', res)
 			ws.send(res);
 		}).catch((err) => {
-			ws.send(err);
+			console.log(err);
 		});
 	}, 1000);
 });
