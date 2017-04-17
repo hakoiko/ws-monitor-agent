@@ -18,7 +18,7 @@ let stat = {
 	}
 };
 
-console.log(os.hostname());
+console.log('OS HOSTNAME: ', os.hostname());
 
 ws.on('open', function open() {
 	setInterval(() => {
