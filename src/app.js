@@ -34,11 +34,11 @@ let stat = {
 	dynamic: function() {
 		return new Promise((resolve, reject) => {
 			Promise.all([this.cpu(), this.mem(), this.fs()]).then((res) => {
-				resolve({
-					cpu: JSON.stringify(res[0]),
-					mem: JSON.stringify(res[1]),
-					fs: JSON.stringify(res[2])
-				});
+				resolve(JSON.stringify({
+					cpu: res[0],
+					mem: res[1],
+					fs: res[2]
+				}));
 			}, (err) => {
 				reject(err);
 			});
