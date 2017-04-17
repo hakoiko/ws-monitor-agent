@@ -8,7 +8,7 @@ let sysinfo = {
 			arch: os.arch(),
 			homedir: os.homedir(),
 			hostname: os.hostname(),
-			ip: os.networkInterfaces().en0[1].address,
+			ip: os.networkInterfaces(),
 			loadAvg: os.loadavg(),
 			platform: os.platform(),
 			release: os.release(),
