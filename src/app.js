@@ -34,11 +34,11 @@ let stat = {
 	dynamic: function() {
 		return new Promise((resolve, reject) => {
 			Promise.all([this.cpu(), this.mem(), this.fs()]).then((res) => {
-				resolve(JSON.stringify({
+				resolve({
 					cpu: res[0],
 					mem: res[1],
 					fs: res[2]
-				}));
+				});
 			}, (err) => {
 				reject(err);
 			});
@@ -51,7 +51,7 @@ ws.on('open', function open() {
 		stat.dynamic().then((res) => {
 			console.log(Config.ROW);
 			console.log('SEND:', res);
-			ws.send(JSON.stringify(res));
+			ws.send(res);
 		}).catch((err) => {
 			console.log(err);
 		});
