@@ -21,7 +21,6 @@ let stat = {
 	ip: () => {
 		return Sysinfo.ip();
 	},
-	oops: 'OOPS',
 	dynamic: function() {
 		return new Promise((resolve, reject) => {
 			Promise.all([this.cpu(), this.mem(), this.fs(), this.ip()]).then((res) => {
@@ -29,7 +28,7 @@ let stat = {
 					cpu: res[0],
 					mem: res[1],
 					fs: res[2],
-					ip: res[3].net[1].ipv4
+					ip: res[3]
 				});
 			}, (err) => {
 				reject(err);
