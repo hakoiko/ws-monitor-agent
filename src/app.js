@@ -51,7 +51,7 @@ ws.on('open', function open() {
 		stat.dynamic().then((res) => {
 			console.log(Config.ROW);
 			console.log('SEND:', res);
-			ws.send(res);
+			ws.send(JSON.stringify(res));
 		}).catch((err) => {
 			console.log(err);
 		});
