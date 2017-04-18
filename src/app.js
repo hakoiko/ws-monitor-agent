@@ -7,22 +7,10 @@ const ws = new Websocket(Config.AETHER_URL);
 
 let stat = {
 	os: () => {
-		return new Promise((resolve, reject) => {
-			Sysinfo.os().then((res) => {
-				resolve(res);
-			}, (err) => {
-				reject(err);
-			});
-		});
+		return Sysinfo.os();
 	},
 	cpu: () => {
-		return new Promise((resolve, reject) => {
-			Sysinfo.cpu().then((res) => {
-				resolve(res);
-			}, (err) => {
-				reject(err);
-			});
-		});
+		return Sysinfo.cpu();
 	},
 	mem: () => {
 		return Sysinfo.mem();
@@ -30,15 +18,18 @@ let stat = {
 	fs: () => {
 		return Sysinfo.fs();
 	},
+	ip: () => {
+		return Sysinfo.ip();
+	},
 	oops: 'OOPS',
 	dynamic: function() {
 		return new Promise((resolve, reject) => {
-			Promise.all([this.cpu(), this.mem(), this.fs(), this.os()]).then((res) => {
+			Promise.all([this.cpu(), this.mem(), this.fs(), this.ip()]).then((res) => {
 				resolve({
 					cpu: res[0],
 					mem: res[1],
 					fs: res[2],
-					ip: res[3]
+					ip: res[3].net[1].ipv4
 				});
 			}, (err) => {
 				reject(err);

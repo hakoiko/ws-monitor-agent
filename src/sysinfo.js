@@ -39,6 +39,19 @@ let sysinfo = {
 				reject(err);
 			});
 		});
+	},
+	ip: () => {
+		return new Promise((resolve, reject) => {
+			si.networkInterfaces((data) => {
+				if (data[1]) {
+					resolve(data[1].ip4);
+				} else {
+					reject(data);
+				}
+			}, (err) => {
+				reject(err);
+			});
+		});
 	}
 };
 
