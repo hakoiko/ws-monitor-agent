@@ -33,11 +33,12 @@ let stat = {
 	oops: 'OOPS',
 	dynamic: function() {
 		return new Promise((resolve, reject) => {
-			Promise.all([this.cpu(), this.mem(), this.fs()]).then((res) => {
+			Promise.all([this.cpu(), this.mem(), this.fs(), this.os()]).then((res) => {
 				resolve({
 					cpu: res[0],
 					mem: res[1],
-					fs: res[2]
+					fs: res[2],
+					ip: res[3]
 				});
 			}, (err) => {
 				reject(err);
