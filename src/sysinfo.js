@@ -52,7 +52,18 @@ let sysinfo = {
 				reject(err);
 			});
 		});
+	},
+	dynamic: () => {
+		return new Promise((resolve, reject) => {
+			si.getDynamicData((data) => {
+				console.log('D');
+				resolve(data);
+			}, (err) => {
+				reject(err);
+			});
+		});
 	}
+	
 };
 
 module.exports = sysinfo;
