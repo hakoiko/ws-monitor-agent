@@ -9,10 +9,12 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm-run-all --parallel watch:server watch:build",
+    "dev": "npm-run-all --parallel watch:server watch:build",
+    "start": "npm-run-all --parallel start:pm2 start:build",
     "watch:build": "webpack --watch",
-    "watch:server": "nodemon \"./dist/bundle.node.js\" --watch \"./dist\"",
-    "build": "webpack -p"
+    "watch:server": "nodemon \"./dist/aether.agent.package.js\" --watch \"./dist\"",
+    "start:build": "webpack -p --watch",
+    "start:pm2": "pm2 start ./dist/aether.agent.package.js --watch"
   },
   "author": "clowleed",
   "license": "ISC",
@@ -34,7 +36,7 @@
   },
   "dependencies": {
     "cpu-stat": "^2.0.1",
-    "pm2": "^2.4.4",
+    "pm2": "^2.4.5",
     "systeminformation": "^3.17.0",
     "ws": "^2.2.3"
   }

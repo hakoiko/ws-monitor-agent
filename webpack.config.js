@@ -3,7 +3,7 @@ const nodeExternals = require('webpack-node-externals'); // 외부 Node.js 모�
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 
-const OutputFileName = 'bundle.node.js';
+const OutputFileName = 'aether.agent.package.js';
 var serverCfg = {
 	context: path.resolve(__dirname, 'src'),
 	entry: './app.js',
