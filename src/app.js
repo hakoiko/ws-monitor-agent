@@ -21,7 +21,7 @@ let stat = {
 	ip: () => {
 		return Sysinfo.ip();
 	},
-	dynamic: function() {
+	dynamicAll: function() {
 		return new Promise((resolve, reject) => {
 			Promise.all([Sysinfo.dynamic(), this.ip()]).then((res) => {
 				var data = res[0];
@@ -31,8 +31,8 @@ let stat = {
 				reject(err);
 			});
 		});
-	}
-	/*dynamic: function() {
+	},
+	dynamic: function() {
 		return new Promise((resolve, reject) => {
 			Promise.all([this.cpu(), this.mem(), this.fs(), this.ip()]).then((res) => {
 				resolve({
@@ -45,7 +45,7 @@ let stat = {
 				reject(err);
 			});
 		});
-	}*/
+	}
 };
 
 ws.on('open', function open() {
