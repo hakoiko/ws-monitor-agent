@@ -56,7 +56,7 @@ let sysinfo = {
 	dynamic: () => {
 		return new Promise((resolve, reject) => {
 			si.getDynamicData((data) => {
-				console.log('D');
+				console.log(data);
 				resolve(data);
 			}, (err) => {
 				reject(err);

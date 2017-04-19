@@ -52,8 +52,8 @@ ws.on('open', function open() {
 	setInterval(() => {
 		stat.dynamic().then((res) => {
 			console.log(Config.ROW);
-			//console.log('SEND:', res);
-			//ws.send(JSON.stringify(res));
+			console.log('SEND:', res);
+			ws.send(JSON.stringify(res));
 		}).catch((err) => {
 			console.log(err);
 		});
