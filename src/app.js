@@ -37,7 +37,7 @@ let stat = {
 	},
 	dynamic: function() {
 		return new Promise((resolve, reject) => {
-			Promise.all([this.cpu(), this.mem(), this.fs(), this.netStat(), this.ip()]).then((res) => {
+			Promise.all([this.cpuStat(), this.memStat(), this.fsStat(), this.netStat(), this.ip()]).then((res) => {
 				resolve({
 					cpu: res[0],
 					mem: res[1],

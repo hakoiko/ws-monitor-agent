@@ -1,5 +1,4 @@
 let si		= require('systeminformation');
-let cpu		= require('cpu-stat');
 let os		= require('os');
 
 let sysinfo = {
@@ -22,7 +21,7 @@ let sysinfo = {
 		});
 	},
 	memStat: () => {
-		return new Promise((resolve, reject) => {
+		return new Promise((resolve) => {
 			resolve({
 				freeBytes: os.freemem(),
 				totalBytes: os.totalmem(),
