@@ -41,7 +41,7 @@ let sysinfo = {
 	},
 	netStat: () => {
 		return new Promise((resolve, reject) => {
-			systeminfo.networkStats((data) => {
+			systeminfo.networkStats(false, (data) => {
 				resolve(data);
 			}, (err) => {
 				reject(err);
