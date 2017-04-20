@@ -1,6 +1,5 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals'); // 외부 Node.js 모듈들을 포함하지 않기 위해 로드.
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 
 const OutputFileName = 'aether.agent.package.js';

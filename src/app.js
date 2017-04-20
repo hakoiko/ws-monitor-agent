@@ -42,7 +42,8 @@ let stat = {
 					cpu: res[0],
 					mem: res[1],
 					fs: res[2],
-					ip: res[3]
+					net: res[3],
+					ip: res[4]
 				});
 			}, (err) => {
 				reject(err);

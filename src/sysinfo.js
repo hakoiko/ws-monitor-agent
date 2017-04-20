@@ -1,10 +1,10 @@
-let si		= require('systeminformation');
-let os		= require('os');
+const systeminfo		= require('systeminformation');
+const os				= require('os');
 
 let sysinfo = {
 	os: () => {
 		return new Promise((resolve, reject) => {
-			si.getStaticData().then((res) => {
+			systeminfo.getStaticData().then((res) => {
 				resolve(res);
 			}, (err) => {
 				reject(err);
@@ -13,7 +13,7 @@ let sysinfo = {
 	},
 	cpuStat: () => {
 		return new Promise((resolve, reject) => {
-			si.currentLoad().then((res) => {
+			systeminfo.currentLoad().then((res) => {
 				resolve(res);
 			}, (err) => {
 				reject(err);
@@ -32,7 +32,7 @@ let sysinfo = {
 	},
 	fsStat: () => {
 		return new Promise((resolve, reject) => {
-			si.fsSize((data) => {
+			systeminfo.fsSize((data) => {
 				resolve(data);
 			}, (err) => {
 				reject(err);
@@ -41,7 +41,7 @@ let sysinfo = {
 	},
 	netStat: () => {
 		return new Promise((resolve, reject) => {
-			si.networkStats((data) => {
+			systeminfo.networkStats((data) => {
 				resolve(data);
 			}, (err) => {
 				reject(err);
@@ -50,7 +50,7 @@ let sysinfo = {
 	},
 	ip: () => {
 		return new Promise((resolve, reject) => {
-			si.networkInterfaces((data) => {
+			systeminfo.networkInterfaces((data) => {
 				if (data[1]) {
 					resolve(data[1].ip4);
 				} else {
@@ -63,7 +63,7 @@ let sysinfo = {
 	},
 	dynamic: () => {
 		return new Promise((resolve, reject) => {
-			si.getDynamicData((data) => {
+			systeminfo.getDynamicData((data) => {
 				resolve(data);
 			}, (err) => {
 				reject(err);
