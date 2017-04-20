@@ -9,14 +9,17 @@ let stat = {
 	os: () => {
 		return Sysinfo.os();
 	},
-	cpu: () => {
-		return Sysinfo.cpu();
+	cpuStat: () => {
+		return Sysinfo.cpuStat();
 	},
-	mem: () => {
-		return Sysinfo.mem();
+	memStat: () => {
+		return Sysinfo.memStat();
 	},
-	fs: () => {
-		return Sysinfo.fs();
+	fsStat: () => {
+		return Sysinfo.fsStat();
+	},
+	netStat: () => {
+		return Sysinfo.netStat();
 	},
 	ip: () => {
 		return Sysinfo.ip();
@@ -34,7 +37,7 @@ let stat = {
 	},
 	dynamic: function() {
 		return new Promise((resolve, reject) => {
-			Promise.all([this.cpu(), this.mem(), this.fs(), this.ip()]).then((res) => {
+			Promise.all([this.cpu(), this.mem(), this.fs(), this.netStat(), this.ip()]).then((res) => {
 				resolve({
 					cpu: res[0],
 					mem: res[1],

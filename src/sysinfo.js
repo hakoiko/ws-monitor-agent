@@ -12,7 +12,7 @@ let sysinfo = {
 			});
 		});
 	},
-	cpu: () => {
+	cpuStat: () => {
 		return new Promise((resolve, reject) => {
 			si.currentLoad().then((res) => {
 				resolve(res);
@@ -21,7 +21,7 @@ let sysinfo = {
 			});
 		});
 	},
-	mem: () => {
+	memStat: () => {
 		return new Promise((resolve, reject) => {
 			resolve({
 				freeBytes: os.freemem(),
@@ -31,9 +31,18 @@ let sysinfo = {
 			});
 		});
 	},
-	fs: () => {
+	fsStat: () => {
 		return new Promise((resolve, reject) => {
 			si.fsSize((data) => {
+				resolve(data);
+			}, (err) => {
+				reject(err);
+			});
+		});
+	},
+	netStat: () => {
+		return new Promise((resolve, reject) => {
+			si.networkStats((data) => {
 				resolve(data);
 			}, (err) => {
 				reject(err);
@@ -56,7 +65,6 @@ let sysinfo = {
 	dynamic: () => {
 		return new Promise((resolve, reject) => {
 			si.getDynamicData((data) => {
-				console.log(data);
 				resolve(data);
 			}, (err) => {
 				reject(err);
