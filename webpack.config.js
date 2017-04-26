@@ -31,7 +31,7 @@ var serverCfg = {
 	plugins: [
 		 new WebpackShellPlugin({
 			 onBuildStart:['echo "Webpack Start"'],
-			 onBuildEnd:['node ' + path.resolve(__dirname, 'dist') + '/' + OutputFileName],
+			 onBuildEnd:['echo "Build End: ' + path.resolve(__dirname, 'dist') + '/' + OutputFileName + '"'],
 		 })
 	]
 };
