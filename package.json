@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack -p",
+    "build": "webpack",
     "start": "pm2 start ./dist/aether.agent.package.js"
   },
   "author": "clowleed",
@@ -33,6 +33,7 @@
   "dependencies": {
     "cpu-stat": "^2.0.1",
     "pm2": "^2.4.5",
+    "socket.io-client": "^2.0.1",
     "systeminformation": "^3.17.0",
     "ws": "^2.2.3"
   }

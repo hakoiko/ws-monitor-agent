@@ -1,32 +1,33 @@
-const Sysinfo = require('./sysinfo');
-const Config = require('./config');
-const Websocket = require('ws');
+const sysinfo = require('./sysinfo');
+const config = require('./config');
+//const Websocket = require('ws');
+const socket = require('socket.io-client')(config.AETHER_URL)
 
 //console.log(Config.ROW);
-const ws = new Websocket(Config.AETHER_URL);
+//const ws = new Websocket(Config.AETHER_URL);
 
 let stat = {
 	os: () => {
-		return Sysinfo.os();
+		return sysinfo.os();
 	},
 	cpuStat: () => {
-		return Sysinfo.cpuStat();
+		return sysinfo.cpuStat();
 	},
 	memStat: () => {
-		return Sysinfo.memStat();
+		return sysinfo.memStat();
 	},
 	fsStat: () => {
-		return Sysinfo.fsStat();
+		return sysinfo.fsStat();
 	},
 	netStat: () => {
-		return Sysinfo.netStat();
+		return sysinfo.netStat();
 	},
 	ip: () => {
-		return Sysinfo.ip();
+		return sysinfo.ip();
 	},
 	dynamicAll: function() {
 		return new Promise((resolve, reject) => {
-			Promise.all([Sysinfo.dynamic(), this.ip()]).then((res) => {
+			Promise.all([sysinfo.dynamic(), this.ip()]).then((res) => {
 				var data = res[0];
 				data.ip = res[1];
 				resolve(data);
@@ -52,7 +53,7 @@ let stat = {
 	}
 };
 
-ws.on('open', function open() {
+/*ws.on('open', function open() {
 	setInterval(() => {
 		stat.dynamic().then((res) => {
 			console.log(Config.ROW, Config.AETHER_URL, Config.ROW);
@@ -62,4 +63,18 @@ ws.on('open', function open() {
 			console.log(err);
 		});
 	}, Config.INTERVAL);
+});*/
+
+console.info('=== AETHER AGENT START ===');
+socket.on('connect', function(data){
+	console.log('SOCKET CONNECTED');
+	setInterval(() => {
+		stat.dynamic().then((res) => {
+			//console.log(config.ROW, config.AETHER_URL, config.ROW);
+			//console.log('SEND:', res);
+			socket.emit('usage', res);
+		}).catch((err) => {
+			console.error(err);
+		});
+	}, config.INTERVAL);
 });
