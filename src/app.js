@@ -1,10 +1,6 @@
 const sysinfo = require('./sysinfo');
 const config = require('./config');
-//const Websocket = require('ws');
 const socket = require('socket.io-client')(config.AETHER_URL)
-
-//console.log(Config.ROW);
-//const ws = new Websocket(Config.AETHER_URL);
 
 let stat = {
 	os: () => {
@@ -53,18 +49,6 @@ let stat = {
 	}
 };
 
-/*ws.on('open', function open() {
-	setInterval(() => {
-		stat.dynamic().then((res) => {
-			console.log(Config.ROW, Config.AETHER_URL, Config.ROW);
-			console.log('SEND:', res);
-			ws.send(JSON.stringify(res));
-		}).catch((err) => {
-			console.log(err);
-		});
-	}, Config.INTERVAL);
-});*/
-
 console.info('=== AETHER AGENT START ===');
 socket.on('connect', function(data){
 	console.log('SOCKET CONNECTED');
@@ -72,6 +56,7 @@ socket.on('connect', function(data){
 		stat.dynamic().then((res) => {
 			//console.log(config.ROW, config.AETHER_URL, config.ROW);
 			//console.log('SEND:', res);
+			console.log('data send', new Date());
 			socket.emit('usage', res);
 		}).catch((err) => {
 			console.error(err);
