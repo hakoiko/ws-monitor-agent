@@ -49,17 +49,31 @@ let stat = {
 	}
 };
 
+let isConnected = false;
+
+let sendData = function() {
+	stat.dynamic().then((res) => {
+		//console.log(config.ROW, config.AETHER_URL, config.ROW);
+		//console.log('SEND:', res);
+		console.log('data send', new Date());
+		socket.emit('usage', res);
+	}).catch((err) => {
+		console.error(err);
+	});
+}
+
+let interval = setInterval(() => {
+	if (isConnected) sendData();
+}, config.INTERVAL)
+
 console.info('=== AETHER AGENT START ===');
 socket.on('connect', function(data){
 	console.log('SOCKET CONNECTED');
-	setInterval(() => {
-		stat.dynamic().then((res) => {
-			//console.log(config.ROW, config.AETHER_URL, config.ROW);
-			//console.log('SEND:', res);
-			console.log('data send', new Date());
-			socket.emit('usage', res);
-		}).catch((err) => {
-			console.error(err);
-		});
-	}, config.INTERVAL);
+	isConnected = true;
 });
+
+socket.on('disconnect', function(data){
+	console.log('SOCKET DISCONNECTED');
+	isConnected = false;
+});
+
