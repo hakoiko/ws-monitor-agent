@@ -1,18 +1,18 @@
 {
   "name": "node-monitor-test",
   "version": "1.0.0",
-  "description": "node system monitoring test for aether.",
+  "description": "node system monitoring with websocket.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "http://gitlab.growthsoft.co.kr/growthdev/aether-monitor.git"
+    "url": "https://github.com/hakoiko/ws-monitor-agent"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "start": "pm2 start ./dist/aether.agent.package.js"
   },
-  "author": "clowleed",
+  "author": "Suchan Kim",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.24.1",
