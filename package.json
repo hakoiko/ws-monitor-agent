@@ -1,5 +1,5 @@
 {
-  "name": "node-monitor-test",
+  "name": "ws-monitor-agent",
   "version": "1.0.0",
   "description": "node system monitoring with websocket.",
   "main": "index.js",
