@@ -1,5 +1,13 @@
 # Node.js System Monitor Agent
-set url for server at src/config.js. and run with
+Simply, it's a system performance monitoring process. `ws-monitor-agent` check your system performance snd send the stats to another server through websocket. this agent could be usefule when you need to monitor multiple servers.
+
+# Boot up
+set server url and monitoring interval at `src/config.js`.
+```
+SERVER_URL: 'http://localhost:8080/ws/agent',
+INTERVAL: 1000
+```
+and run with
 ```
 npm run start
 ```

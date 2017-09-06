@@ -1,7 +1,7 @@
 const config = {
-	APP_NAME:	'AETHER MONITOR',
+	APP_NAME:	'WS-MONITOR',
 	ROW:		'=================================================',
-	AETHER_URL:	'http://localhost:8080/ws/agent',
+	SERVER_URL:	'http://localhost:8080/ws/agent',
 	INTERVAL:	1000
 };
 

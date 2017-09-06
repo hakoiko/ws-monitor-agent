@@ -1,6 +1,6 @@
 const sysinfo = require('./sysinfo');
 const config = require('./config');
-const socket = require('socket.io-client')(config.AETHER_URL)
+const socket = require('socket.io-client')(config.SERVER_URL)
 
 let stat = {
 	os: () => {
@@ -53,8 +53,6 @@ let isConnected = false;
 
 let sendData = function() {
 	stat.dynamic().then((res) => {
-		//console.log(config.ROW, config.AETHER_URL, config.ROW);
-		//console.log('SEND:', res);
 		console.log('data send', new Date());
 		socket.emit('usage', res);
 	}).catch((err) => {
