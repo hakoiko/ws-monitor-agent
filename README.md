@@ -1,5 +1,5 @@
 # Node.js System Monitor Agent
-Simply, it's a system performance monitoring process. `ws-monitor-agent` check your system performance snd send the stats to another server through websocket. this agent could be usefule when you need to monitor multiple servers.
+It's a system performance monitoring process. `ws-monitor-agent` check your system performance snd send stats to another server with websocket. This agent could be useful when you need to monitor multiple servers.
 
 # Boot up
 set server url and monitoring interval at `src/config.js`.
@@ -11,14 +11,14 @@ and run with
 ```
 npm run start
 ```
-the app runs with PM2. or you can run this monitoring agent just type `pm2 start dist/node.bundle.js --watch` if you installed PM2.
+the process runs with PM2. or you can run this monitoring process just type `pm2 start dist/node.bundle.js --watch` if you already installed PM2.
 
 # Requirements
 - node.js > 5.x
 - node-gyp
 - gcc
 
-the app needs node.js latest then 5.x. and also need node-gyp and gcc. if your system dosen't have gcc, please install it. if you use a vainilla centOS, you must do it. 
+the process needs node.js 5.x~. and also need node-gyp and gcc. if your system dosen't have gcc, please install it. if you use a vainilla centOS, you must do it. 
 ```
 sudo yum install gcc-c++
 ```
